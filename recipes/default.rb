@@ -62,6 +62,6 @@ end
 
 #Start and enable tomcat service if requested
 service 'tomcat8' do
-  action :start, :enable
+  action [:enable, :start]
   only_if { node['tomcat8']['autostart'] }
 end
