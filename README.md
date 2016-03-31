@@ -1,23 +1,18 @@
 tomcat8 Cookbook
 ================
-TODO: Enter the cookbook description here.
+Chef 11 compatible cookbook that installs tomcat8 in a basic configuration.
+Partially based on the tomcat_latest cookbook by Chendil Kumar Manoharan
+<mkchendil@gmail.com> under the Apache 2.0 license
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Only been tested on Ubuntu and may only work on Ubuntu and perhaps Debian
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
 #### packages
-- `toaster` - tomcat8 needs toaster to brown your bagel.
+- `java` - tomcat8 needs java before it can be installed.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
-
-e.g.
 #### tomcat8::default
 <table>
   <tr>
@@ -27,19 +22,52 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['tomcat8']['bacon']</tt></td>
+    <td><tt>['tomcat8']['download_url']</tt></td>
+    <td>String</td>
+    <td>Where to download tomcat from</td>
+    <td><tt>http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0.33.tar.gz</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['tomcat8']['install_location']</tt></td>
+    <td>String</td>
+    <td>Default install location></td>
+    <td><tt>/var/tomcat8</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['tomcat8']['port']</tt></td>
+    <td>Number</td>
+    <td>Default port for tomcat to use</td>
+    <td><tt>8080</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['tomcat8']['ssl_port']</tt></td>
+    <td>Number</td>
+    <td>Default ssl port for tomcat</td>
+    <td><tt>8443</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['tomcat8']['ajp_port']</tt></td>
+    <td>Number</td>
+    <td>Default ajp port for tomcat</td>
+    <td><tt>8009</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['tomcat8']['tomcat_user']</tt></td>
+    <td>String</td>
+    <td>Default user for tomcat</td>
+    <td><tt>root</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['tomcat8']['autostart']</tt></td>
     <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td>Whether to autostart tomcat</td>
+    <td><tt>true></tt></td>
   </tr>
 </table>
 
 Usage
 -----
 #### tomcat8::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
 Just include `tomcat8` in your node's `run_list`:
 
 ```json
@@ -50,19 +78,3 @@ Just include `tomcat8` in your node's `run_list`:
   ]
 }
 ```
-
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
-License and Authors
--------------------
-Authors: TODO: List authors
