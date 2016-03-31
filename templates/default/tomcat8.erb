@@ -2,10 +2,10 @@
 export JAVA_OPTS=<%= node["tomcat8"]["java_options"] %>
 case "$1" in
 start)
-  <%= node["tomcat8"]["tomcat_install_loc"] %>/tomcat/apache-tomcat/bin/startup.sh
+  <%= node["tomcat8"]["tomcat_install_loc"] %>/bin/startup.sh
 ;;
 stop)
-  <%= node["tomcat8"]["tomcat_install_loc"] %>/tomcat/apache-tomcat/bin/shutdown.sh
+  <%= node["tomcat8"]["tomcat_install_loc"] %>/bin/shutdown.sh
 ;;
 *)
   echo "Syntax: $0 <start|stop>"
