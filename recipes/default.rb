@@ -60,9 +60,8 @@ template "/etc/init.d/tomcat8" do
   mode '0755'
 end
 
-#Start and enable tomcat service is requested
-if node['tomcat8']['autostart']
-  service 'tomcat8' do
-    action :start, :enable
-  end
+#Start and enable tomcat service if requested
+service 'tomcat8' do
+  action :start, :enable
+  only_if { node['tomcat8']['autostart'] }
 end
